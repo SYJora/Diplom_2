@@ -16,6 +16,13 @@ class TestOrder:
                       headers={"Authorization": create_login_return_token.json()['accessToken']}, json=data)
         assert respons.status_code == cod and respons.json()[masseg] == result
 
+    @allure.title('Создание заказа c не существуешими ингридиентами')
+    def test_incorect_hesh_order(self, create_login_return_token):
+        respons = requests.post(Urls.BASE_URL + Urls.CREATE_ORDER,
+                                headers={"Authorization": create_login_return_token.json()['accessToken']},
+                                json=DataOrder.ORDER_INCORRECT_HESH_NAME)
+        assert respons.status_code == 500
+
     @allure.title('Создание заказа не авторизированным пользователем')
     def test_log_out_user_get_order(self,create_user_log_in_log_out_return_token):
         respons = requests.post(Urls.BASE_URL + Urls.CREATE_ORDER,

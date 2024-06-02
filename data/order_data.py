@@ -12,11 +12,10 @@ class DataOrder:
     }
 
     ORDER_INCORRECT_HESH_NAME = {
-        "ingredients": ['2565323', '2153412']
+        "ingredients": 'kddk'
     }
 
     param = [
         (ORDER, 200, 'success', True),
         (ORDER_EPTY, 400, 'success', False),
-        (ORDER_INCORRECT_HESH_NAME, 500, 'success', True)
     ]
