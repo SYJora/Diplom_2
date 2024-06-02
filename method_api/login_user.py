@@ -1,3 +1,4 @@
+import allure
 import requests
 
 from data.login_data import DataLogin
@@ -6,12 +7,7 @@ from urls import Urls
 
 class LoginUser:
 
-    @staticmethod
-    def log_in(data):
-        return requests.post(Urls.BASE_URL + Urls.LOGIN_USER, json=data)
-
-    @staticmethod
-    def changest_user_data(token, data):
+    def changest_user_data(self, token, data):
         return requests.patch(Urls.BASE_URL + Urls.CHANGEST_USER_DATA, headers = token, json = data)
 
     def test_create_user_log_out(self, data):
