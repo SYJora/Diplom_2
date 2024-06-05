@@ -16,7 +16,7 @@ class TestLogin:
         assert respons.status_code == code and respons.json()[key] == message
 
     @allure.title('Проверка изменения данных авторизированного пользователя')
-    def test_changest_log_in_user_data(self, creta_user):
+    def test_changest_log_in_user_data(self, creta_user):  # тест не проходит через комаду обшего запуска но в соло работает не понял причину 
         respons =requests.patch(Urls.BASE_URL + Urls.CHANGEST_USER_DATA,
                        headers= {"Authorization": creta_user.json()['accessToken']}, json=DataLogin.CHANGEST_USER_NAME)
         assert respons.json()['success'] == True and respons.json()['user']['name'] == DataLogin.CHANGEST_USER_NAME['name']

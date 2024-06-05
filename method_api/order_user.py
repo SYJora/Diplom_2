@@ -1,9 +1,11 @@
+import allure
 import requests
 
 from urls import Urls
 
 
 class OrderMethod:
+    @allure.step('Получаю первые три игридиента из списка  и возврпашяю их')
     @staticmethod
     def get_ingredients():
         respons = requests.get(Urls.BASE_URL + Urls.LIST_INGR)
