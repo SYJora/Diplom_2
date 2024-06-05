@@ -6,6 +6,7 @@ from urls import Urls
 
 
 class LoginUser:
+
     @allure.step('Изменяют данные пользователя')
     def changest_user_data(self, token, data):
         return requests.patch(Urls.BASE_URL + Urls.CHANGEST_USER_DATA, headers = token, json = data)

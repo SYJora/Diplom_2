@@ -5,8 +5,9 @@ from urls import Urls
 
 
 class OrderMethod:
-    @allure.step('Получаю первые три игридиента из списка  и возврпашяю их')
+
     @staticmethod
+    @allure.step('Получаю первые три игридиента из списка  и возврпашяю их')
     def get_ingredients():
         respons = requests.get(Urls.BASE_URL + Urls.LIST_INGR)
         ingr = []
