@@ -24,7 +24,7 @@ class TestOrder:
         assert respons.status_code == 500
 
     @allure.title('Создание заказа не авторизированным пользователем')
-    def test_log_out_user_get_order(self,create_user_log_in_log_out_return_token):  # Согласно документаций должен быть код 400
+    def test_log_out_user_get_order(self,create_login_return_token):  # Согласно документаций должен быть код 400
         respons = requests.post(Urls.BASE_URL + Urls.CREATE_ORDER,
                                 json=DataOrder.ORDER)
         assert respons.status_code == 400 and respons.json()['message'] == "Ingredient ids must be provided"

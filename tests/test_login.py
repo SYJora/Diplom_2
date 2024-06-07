@@ -10,7 +10,7 @@ class TestLogin:
 
     @allure.title('Проверка входа пользователя в систему')
     @pytest.mark.parametrize('param', DataLogin.param)
-    def test_log_in(self, create_log_in, param):
+    def test_log_in(self, creta_user, param):
         data, code, key, message = param
         respons = requests.post(Urls.BASE_URL + Urls.LOGIN_USER, json=data)
         assert respons.status_code == code and respons.json()[key] == message

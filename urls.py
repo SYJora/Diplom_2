@@ -6,4 +6,5 @@ class Urls:
     LOG_OUT = '/api/auth/logout'
     CREATE_ORDER = '/api/orders'
     CHANGEST_USER_DATA = '/api/auth/user'
+    DELETE_USER = '/api/auth/user'
 

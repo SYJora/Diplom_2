@@ -5,11 +5,6 @@ import requests
 from data.login_data import DataLogin
 from urls import Urls
 
-
-@pytest.fixture(scope='function')
-def create_log_in():
-    requests.post(Urls.BASE_URL + Urls.CREATE_USER, json = DataLogin.CREAT_USER)
-
 @pytest.fixture(scope='function')
 def creta_user():
     respons = requests.post(Urls.BASE_URL + Urls.CREATE_USER, json = DataLogin.CREAT_USER)
@@ -25,15 +20,10 @@ def test_create_user_log_out():
 def create_login_return_token():
     requests.post(Urls.BASE_URL + Urls.CREATE_USER, json=DataLogin.CREAT_USER)
     respons = requests.post(Urls.BASE_URL + Urls.LOGIN_USER, json=DataLogin.LOGIN_USER)
-    return respons # Возьму токен от сюдава
+    yield respons  # Возьму токен от сюдава
 
-@allure.step('Создание пользователя вход и выход из системы')
-@pytest.fixture(scope='function')
-def create_user_log_in_log_out_return_token():
-    requests.post(Urls.BASE_URL + Urls.CREATE_USER, json=DataLogin.CREAT_USER)
-    respons = requests.post(Urls.BASE_URL + Urls.LOGIN_USER, json=DataLogin.LOGIN_USER)
-    requests.post(Urls.BASE_URL + Urls.LOG_OUT, json = {"token": respons.json()['refreshToken']})
-    return respons # Возьму токен от сюдава
+    requests.delete(Urls.BASE_URL + Urls.DELETE_USER, headers={"Authorization": respons.json()['accessToken']})
+
 
 
 

@@ -19,7 +19,20 @@ class UserData:
         "name": name
     }
 
+    CREAT_USER_WITHOUT_PASSWORD = {
+        "email": f"{user_maill}@mail.ru",
+        "name": name
+    }
+
+    CREAT_USER_WITHOUT_NAME = {
+        "email": f"{user_maill}@mail.ru",
+        "password": "12134"
+    }
+
+
     param = [(CREAT_USER, 200, 'success', True),
              (COPY_USER, 403, 'message', 'User already exists'),
-             (CREAT_USER_WITHOUT_EMAIL, 403, 'message', 'Email, password and name are required fields')]
+             (CREAT_USER_WITHOUT_EMAIL, 403, 'message', 'Email, password and name are required fields'),
+             (CREAT_USER_WITHOUT_PASSWORD, 403, 'message', 'Email, password and name are required fields'),
+             (CREAT_USER_WITHOUT_NAME, 403, 'message', 'Email, password and name are required fields')]
 
